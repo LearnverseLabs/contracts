@@ -71,6 +71,7 @@
     "access": "public"
   },
   "scripts": {
+    "ci": "yarn clean && yarn prettier && yarn lint && yarn coverage",
     "clean": "shx rm -rf ./artifacts ./cache ./coverage ./src/types ./coverage.json",
     "commit": "git-cz",
     "compile": "cross-env TS_NODE_TRANSPILE_ONLY=true hardhat compile",

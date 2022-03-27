@@ -31,9 +31,9 @@ jobs:
       - name: copy local env
         run: |
           cp .env.local .env
-      - name: Run unit test and report coverage report
+      - name: Run CI command
         run: |
-          yarn coverage
+          yarn ci
       - name: Collect test coverage file
         uses: actions/upload-artifact@v1.0.0
         with:
