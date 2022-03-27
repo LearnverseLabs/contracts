@@ -12,6 +12,7 @@
 **/.coverage_artifacts
 **/.coverage_cache
 **/.coverage_contracts
+docs
 **/dist
 **/node_modules
 
