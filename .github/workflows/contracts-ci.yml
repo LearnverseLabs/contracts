@@ -1,0 +1,41 @@
+name: Contracts CI
+
+on:
+  push:
+    branchs:
+      - "*"
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  solci:
+    name: Test with solcover
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        node_version: [16]
+        os: [ubuntu-latest]
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Setup node.js env
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node_version }}
+          cache: "yarn"
+      - name: Install dependencies
+        run: |
+          yarn
+      - name: copy local env
+        run: |
+          cp .env.local .env
+      - name: Run unit test and report coverage report
+        run: |
+          yarn coverage
+      - name: Collect test coverage file
+        uses: actions/upload-artifact@v1.0.0
+        with:
+          name: coverage
+          path: coverage
