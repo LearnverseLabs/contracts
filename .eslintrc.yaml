@@ -11,7 +11,7 @@ plugins:
 root: true
 rules:
   "@typescript-eslint/no-floating-promises":
-    - error
+    - off
     - ignoreIIFE: true
       ignoreVoid: true
   "@typescript-eslint/no-inferrable-types": "off"
